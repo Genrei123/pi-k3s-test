@@ -16,7 +16,8 @@ spec:
         kubernetes.io/hostname: server
       containers:
       - name: nginx
-        image: ghcr.io/YOUR_GITHUB_USERNAME/k3s-poc:latest
+        image: ghcr.io/genrei123/pi-k3s-test:latest
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
