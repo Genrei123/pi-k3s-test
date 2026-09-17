@@ -12,8 +12,6 @@ spec:
       labels:
         app: web-test
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: server
       containers:
       - name: nginx
         image: ghcr.io/genrei123/pi-k3s-test:latest
