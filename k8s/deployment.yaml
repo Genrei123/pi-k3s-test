@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-test
+  template:
+    metadata:
+      labels:
+        app: web-test
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: server
+      containers:
+      - name: nginx
+        image: ghcr.io/YOUR_GITHUB_USERNAME/k3s-poc:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-test
+spec:
+  type: NodePort
+  selector:
+    app: web-test
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30080
